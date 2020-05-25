@@ -10,11 +10,16 @@ let controller = function() {
       $new_comment = $("<p>").text($(".comment-input input").val());
       //$new_comment.hide();
       $(".comments").append($new_comment);
+      localStorage.setItem("toDoList", $(".comments").html());
       //$new_comment.fadeIn();
+
       $(".comment-input input").val("");
     }
   };
-
+  test = localStorage.getItem("toDoList");
+  if (test =! null) {
+  $(".comments").html(localStorage.getItem("toDoList"));
+  }
   $(".comment-input button").on("click", function(event) {
     addCommentFromInputBox();
   });
